@@ -15,14 +15,17 @@ export function useSchedule() {
 
   const updateSession = useCallback(
     (id: string, patch: Partial<CodeReviewSession>) => {
-      const errors = validateSession(patch);
-      if (errors.length) throw new Error(errors.join("; "));
-      setData((prev) => ({
-        ...prev,
-        sessions: prev.sessions.map((s) =>
-          s.id === id ? { ...s, ...patch } : s
-        ),
-      }));
+      setData((prev) => {
+        const existing = prev.sessions.find((s) => s.id === id);
+        if (!existing) return prev;
+        const merged = { ...existing, ...patch };
+        const errors = validateSession(merged);
+        if (errors.length) throw new Error(errors.join("; "));
+        return {
+          ...prev,
+          sessions: prev.sessions.map((s) => (s.id === id ? merged : s)),
+        };
+      });
     },
     []
   );

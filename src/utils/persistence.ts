@@ -1,28 +1,19 @@
 import type { AppData, CodeReviewSession, CodeReviewIdea, SemesterConfig } from "../types";
-import { generateDefaultSessions } from "./semesterUtils";
+import { SEED_APP_DATA } from "./seedData";
 
 const STORAGE_KEY = "code-review-schedule-v1";
-const DATA_VERSION = 1;
+// Bump this whenever the published seed schedule changes so returning visitors
+// refresh to the latest content (see the migration hook in loadData).
+const DATA_VERSION = SEED_APP_DATA.version;
 
 // ── Default semester configuration ────────────────────────────────────────────
-// Edit this object to configure a new semester. All Friday dates are
-// generated automatically from startDate / endDate.
-export const DEFAULT_SEMESTER_CONFIG: SemesterConfig = {
-  name: "Fall 2026",
-  startDate: "2026-08-24", // First day of Purdue Fall 2026 semester
-  endDate: "2026-12-19",   // Last day of Purdue Fall 2026 semester
-  meetingTime: "15:30",    // 3:30 PM
-  meetingDayOfWeek: 5,     // Friday
-};
+// The published schedule lives in seedData.ts; this re-exports its config for
+// components that reference a default semester.
+export const DEFAULT_SEMESTER_CONFIG: SemesterConfig = SEED_APP_DATA.semesterConfig;
 
 function buildDefaultData(): AppData {
-  const sessions = generateDefaultSessions(DEFAULT_SEMESTER_CONFIG);
-  return {
-    semesterConfig: DEFAULT_SEMESTER_CONFIG,
-    sessions,
-    ideas: [],
-    version: DATA_VERSION,
-  };
+  // Deep clone so callers can mutate the returned data without touching the seed.
+  return structuredClone(SEED_APP_DATA);
 }
 
 export function loadData(): AppData {

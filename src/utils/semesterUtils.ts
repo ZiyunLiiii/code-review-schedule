@@ -39,17 +39,25 @@ export function generateDefaultSessions(
 }
 
 // Merges newly generated dates with existing sessions so that manual edits
-// survive a semester config change.
+// survive a semester config change. A date may hold more than one session
+// (competing proposals), so all existing sessions for a meeting date are kept.
 export function reconcileSessions(
   existing: CodeReviewSession[],
   config: SemesterConfig
 ): CodeReviewSession[] {
   const dates = getMeetingDates(config);
-  const byDate = new Map(existing.map((s) => [s.date, s]));
+  const byDate = new Map<string, CodeReviewSession[]>();
+  for (const s of existing) {
+    const list = byDate.get(s.date);
+    if (list) list.push(s);
+    else byDate.set(s.date, [s]);
+  }
 
-  return dates.map(
-    (date) =>
-      byDate.get(date) ?? {
+  return dates.flatMap((date) => {
+    const list = byDate.get(date);
+    if (list && list.length) return list;
+    return [
+      {
         id: crypto.randomUUID(),
         date,
         time: config.meetingTime,
@@ -57,8 +65,9 @@ export function reconcileSessions(
         speaker: "",
         notes: "",
         status: "open" as const,
-      }
-  );
+      },
+    ];
+  });
 }
 
 export function formatDate(dateStr: string): string {

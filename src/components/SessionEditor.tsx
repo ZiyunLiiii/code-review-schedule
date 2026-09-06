@@ -4,8 +4,11 @@ import { formatDate, formatTime } from "../utils/semesterUtils";
 
 interface Props {
   session: CodeReviewSession | null;
+  // How many sessions (including this one) share this session's date.
+  siblingCount?: number;
   onSave: (patch: Partial<CodeReviewSession>) => void;
   onDelete: (id: string) => void;
+  onAddProposal: (date: string, time: string) => void;
   onClose: () => void;
 }
 
@@ -16,7 +19,14 @@ const STATUS_OPTIONS: { value: SessionStatus; label: string }[] = [
   { value: "completed", label: "Completed" },
 ];
 
-export function SessionEditor({ session, onSave, onDelete, onClose }: Props) {
+export function SessionEditor({
+  session,
+  siblingCount = 1,
+  onSave,
+  onDelete,
+  onAddProposal,
+  onClose,
+}: Props) {
   const [form, setForm] = useState<Partial<CodeReviewSession>>({});
   const topicRef = useRef<HTMLInputElement>(null);
 
@@ -62,6 +72,11 @@ export function SessionEditor({ session, onSave, onDelete, onClose }: Props) {
           <div>
             <div className="modal-date">{formatDate(session.date)}</div>
             <div className="modal-time">{formatTime(session.time)}</div>
+            {siblingCount > 1 && (
+              <div className="modal-sibling-note">
+                {siblingCount} talks proposed for this day
+              </div>
+            )}
           </div>
           <button className="btn-icon" onClick={onClose} title="Close (Esc)">
             ✕
@@ -123,6 +138,15 @@ export function SessionEditor({ session, onSave, onDelete, onClose }: Props) {
             />
           </label>
         </div>
+
+        <button
+          type="button"
+          className="btn btn-outline modal-add-proposal"
+          onClick={() => onAddProposal(session.date, form.time ?? session.time)}
+          title="Add a competing proposal for this same Friday"
+        >
+          ＋ Add another proposal for this day
+        </button>
 
         <div className="modal-footer">
           <button

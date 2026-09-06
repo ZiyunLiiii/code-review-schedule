@@ -486,6 +486,17 @@ input, select, textarea { font: inherit; }
 
 .modal-date { font-size: 16px; font-weight: 700; }
 .modal-time { font-size: 13px; color: var(--color-text-muted); margin-top: 2px; }
+.modal-sibling-note {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 4px;
+}
+
+.modal-add-proposal {
+  margin: 4px 20px 0;
+  width: calc(100% - 40px);
+}
 
 .modal-body {
   padding: 16px 20px;

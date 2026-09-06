@@ -16,6 +16,7 @@ export default function App() {
     stats,
     updateSession,
     deleteSession,
+    addSession,
     addIdea,
     updateIdea,
     deleteIdea,
@@ -42,6 +43,19 @@ export default function App() {
   function handleDelete(id: string) {
     deleteSession(id);
     if (editingId === id) setEditingId(null);
+  }
+
+  // Add a second (or third…) competing proposal on the same Friday, then open it.
+  function handleAddProposal(date: string, time: string) {
+    const id = addSession({
+      date,
+      time,
+      topic: "",
+      speaker: "",
+      notes: "",
+      status: "proposed",
+    });
+    setEditingId(id);
   }
 
   return (
@@ -112,8 +126,14 @@ export default function App() {
 
       <SessionEditor
         session={editingSession}
+        siblingCount={
+          editingSession
+            ? data.sessions.filter((s) => s.date === editingSession.date).length
+            : 0
+        }
         onSave={(patch) => editingId && updateSession(editingId, patch)}
         onDelete={handleDelete}
+        onAddProposal={handleAddProposal}
         onClose={() => setEditingId(null)}
       />
 

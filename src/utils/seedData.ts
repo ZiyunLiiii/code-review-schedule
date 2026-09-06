@@ -13,7 +13,7 @@ export const SEED_APP_DATA: AppData = {
     meetingTime: "15:30",
     meetingDayOfWeek: 5,
   },
-  version: 2,
+  version: 3,
   sessions: [
     {
       id: "seed-2026-09-04",
@@ -94,6 +94,15 @@ export const SEED_APP_DATA: AppData = {
       topic: "High performance computing",
       speaker: "Xiao Wang",
       notes: "",
+      status: "proposed",
+    },
+    {
+      id: "seed-2026-10-30-b",
+      date: "2026-10-30",
+      time: "15:30",
+      topic: "Sowmya's research talk",
+      speaker: "Sowmya",
+      notes: "Competing proposal for this Friday — undecided.",
       status: "proposed",
     },
     {
@@ -184,14 +193,6 @@ export const SEED_APP_DATA: AppData = {
       notes: "A debate on the future of AI, I think, would be really cool. I know some people are probably optimistic about it while others are pessimistic about it.  Probably need an informal survey to figure out who it optimistic and who is pessimistic. ",
       proposedDate: "",
       createdAt: "2026-09-01T03:26:00.000Z",
-    },
-    {
-      id: "seed-idea-sowmya",
-      topic: "Sowmya's research talk",
-      suggestedSpeaker: "Sowmya",
-      notes: "",
-      proposedDate: "2026-10-30",
-      createdAt: "2026-09-05T00:00:00.000Z",
     },
   ],
 };

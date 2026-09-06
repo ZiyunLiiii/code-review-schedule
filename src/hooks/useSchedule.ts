@@ -40,13 +40,15 @@ export function useSchedule() {
   const addSession = useCallback((session: Omit<CodeReviewSession, "id">) => {
     const errors = validateSession(session);
     if (errors.length) throw new Error(errors.join("; "));
+    const id = crypto.randomUUID();
     setData((prev) => ({
       ...prev,
       sessions: [
         ...prev.sessions,
-        { ...session, id: crypto.randomUUID() },
+        { ...session, id },
       ].sort((a, b) => a.date.localeCompare(b.date)),
     }));
+    return id;
   }, []);
 
   // ── Ideas ─────────────────────────────────────────────────────────────────────

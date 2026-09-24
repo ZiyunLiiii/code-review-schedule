@@ -6,6 +6,7 @@ import { ScheduleTable } from "./components/ScheduleTable";
 import { SessionEditor } from "./components/SessionEditor";
 import { IdeasBacklog } from "./components/IdeasBacklog";
 import { SemesterConfigPanel } from "./components/SemesterConfigPanel";
+import { PastScheduleMemo } from "./components/PastScheduleMemo";
 import type { SessionStatus } from "./types";
 
 type View = "calendar" | "table";
@@ -136,6 +137,8 @@ export default function App() {
         onAddProposal={handleAddProposal}
         onClose={() => setEditingId(null)}
       />
+
+      <PastScheduleMemo />
 
       <footer className="app-footer">
         Purdue University · {data.semesterConfig.name} · Fridays at 3:30 PM

@@ -32,6 +32,10 @@
   --color-completed-bg: #f0faf5;
   --color-completed-border: #a3cfbb;
 
+  --color-canceled: #b02a37;
+  --color-canceled-bg: #fbf1f2;
+  --color-canceled-border: #f0c2c7;
+
   --radius: 6px;
   --radius-lg: 10px;
   --shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
@@ -147,6 +151,7 @@ input, select, textarea { font: inherit; }
 .stat-proposed .stat-value { color: var(--color-proposed); }
 .stat-confirmed .stat-value { color: var(--color-confirmed); }
 .stat-completed .stat-value { color: var(--color-completed); }
+.stat-canceled .stat-value { color: var(--color-canceled); }
 
 .summary-next {
   font-size: 13px;
@@ -296,6 +301,8 @@ input, select, textarea { font: inherit; }
 .cal-card.status-proposed { border-left: 3px solid var(--color-proposed); }
 .cal-card.status-confirmed { border-left: 3px solid var(--color-confirmed); }
 .cal-card.status-completed { border-left: 3px solid var(--color-completed); opacity: 0.7; }
+.cal-card.status-canceled { border-left: 3px solid var(--color-canceled); opacity: 0.65; }
+.cal-card.status-canceled .cal-topic { text-decoration: line-through; }
 
 .cal-day {
   display: flex;
@@ -360,6 +367,7 @@ input, select, textarea { font: inherit; }
 .status-bg-proposed { background: var(--color-proposed-bg); color: var(--color-proposed); }
 .status-bg-confirmed { background: var(--color-confirmed-bg); color: var(--color-confirmed); }
 .status-bg-completed { background: var(--color-completed-bg); color: var(--color-completed); }
+.status-bg-canceled { background: var(--color-canceled-bg); color: var(--color-canceled); }
 
 .cal-time {
   font-size: 10px;
@@ -417,6 +425,8 @@ input, select, textarea { font: inherit; }
 .status-row-proposed {}
 .status-row-confirmed {}
 .status-row-completed { color: var(--color-text-muted); }
+.status-row-canceled { color: var(--color-text-muted); }
+.status-row-canceled .col-topic { text-decoration: line-through; }
 
 .col-num { color: var(--color-text-light); font-variant-numeric: tabular-nums; width: 36px; }
 .col-date { white-space: nowrap; position: relative; }
@@ -452,6 +462,7 @@ input, select, textarea { font: inherit; }
 .status-select.status-proposed { color: var(--color-proposed); }
 .status-select.status-confirmed { color: var(--color-confirmed); }
 .status-select.status-completed { color: var(--color-completed); }
+.status-select.status-canceled { color: var(--color-canceled); }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Session editor modal

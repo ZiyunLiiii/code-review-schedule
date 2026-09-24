@@ -149,6 +149,7 @@ export function useSchedule() {
     proposed: data.sessions.filter((s) => s.status === "proposed").length,
     confirmed: data.sessions.filter((s) => s.status === "confirmed").length,
     completed: data.sessions.filter((s) => s.status === "completed").length,
+    canceled: data.sessions.filter((s) => s.status === "canceled").length,
   };
 
   return {

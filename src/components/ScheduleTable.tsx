@@ -9,7 +9,7 @@ interface Props {
   selectedId?: string | null;
 }
 
-const STATUS_OPTIONS: SessionStatus[] = ["open", "proposed", "confirmed", "completed"];
+const STATUS_OPTIONS: SessionStatus[] = ["open", "proposed", "confirmed", "completed", "canceled"];
 
 export function ScheduleTable({
   sessions,

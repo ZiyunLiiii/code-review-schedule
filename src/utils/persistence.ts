@@ -106,7 +106,7 @@ export function validateSession(s: Partial<CodeReviewSession>): string[] {
   const errors: string[] = [];
   if (!s.date) errors.push("Date is required");
   if (!s.time) errors.push("Time is required");
-  if (!["open", "proposed", "confirmed", "completed"].includes(s.status ?? "")) {
+  if (!["open", "proposed", "confirmed", "completed", "canceled"].includes(s.status ?? "")) {
     errors.push("Invalid status");
   }
   return errors;

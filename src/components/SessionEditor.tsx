@@ -17,6 +17,7 @@ const STATUS_OPTIONS: { value: SessionStatus; label: string }[] = [
   { value: "proposed", label: "Proposed" },
   { value: "confirmed", label: "Confirmed" },
   { value: "completed", label: "Completed" },
+  { value: "canceled", label: "Canceled" },
 ];
 
 export function SessionEditor({

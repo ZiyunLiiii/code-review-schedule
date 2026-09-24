@@ -1,4 +1,4 @@
-export type SessionStatus = "open" | "proposed" | "confirmed" | "completed";
+export type SessionStatus = "open" | "proposed" | "confirmed" | "completed" | "canceled";
 
 export interface CodeReviewSession {
   id: string;

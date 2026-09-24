@@ -8,6 +8,7 @@ interface Props {
     proposed: number;
     confirmed: number;
     completed: number;
+    canceled: number;
   };
   semesterConfig: SemesterConfig;
   sessions: CodeReviewSession[];
@@ -17,6 +18,7 @@ export function SemesterSummary({ stats, semesterConfig, sessions }: Props) {
   const nextSession = sessions.find(
     (s) =>
       s.status !== "completed" &&
+      s.status !== "canceled" &&
       new Date(s.date + "T00:00:00") >= new Date(new Date().setHours(0, 0, 0, 0))
   );
 
@@ -29,6 +31,9 @@ export function SemesterSummary({ stats, semesterConfig, sessions }: Props) {
         <Stat label="Proposed" value={stats.proposed} variant="proposed" />
         <Stat label="Confirmed" value={stats.confirmed} variant="confirmed" />
         <Stat label="Completed" value={stats.completed} variant="completed" />
+        {stats.canceled > 0 && (
+          <Stat label="Canceled" value={stats.canceled} variant="canceled" />
+        )}
       </div>
       {nextSession && (
         <div className="summary-next">

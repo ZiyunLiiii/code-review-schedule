@@ -4,6 +4,8 @@ A lightweight website for managing weekly Code Review meetings. Displays all Fri
 
 Built with React + Vite + TypeScript. No backend — data lives in browser localStorage.
 
+**Live site:** [https://ziyunliiii.github.io/code-review-schedule/](https://ziyunliiii.github.io/code-review-schedule/)
+
 ## Quick start
 
 ```bash

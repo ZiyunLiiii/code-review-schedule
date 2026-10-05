@@ -13,7 +13,7 @@ export const SEED_APP_DATA: AppData = {
     meetingTime: "15:30",
     meetingDayOfWeek: 5,
   },
-  version: 12,
+  version: 13,
   sessions: [
     {
       id: "seed-2026-09-04",
@@ -58,7 +58,7 @@ export const SEED_APP_DATA: AppData = {
       topic: "Claude: 'I ain't misbehaving'",
       speaker: "Charlie",
       notes: "Charlie is sending everyone a prompt to run on their own Claude; we'll collect and discuss the real examples of how Claude 'misbehaved'.",
-      status: "confirmed",
+      status: "completed",
     },
     {
       id: "seed-2026-10-09",

@@ -13,7 +13,7 @@ export const SEED_APP_DATA: AppData = {
     meetingTime: "15:30",
     meetingDayOfWeek: 5,
   },
-  version: 13,
+  version: 14,
   sessions: [
     {
       id: "seed-2026-09-04",
@@ -67,7 +67,7 @@ export const SEED_APP_DATA: AppData = {
       topic: "Visit from Marcus Carlsson (Lund University) — talk or discussion TBD",
       speaker: "Marcus Carlsson",
       notes: "Former Purdue math postdoc, now a professor at Lund University, visiting on Oct 9. Format (talk vs. discussion) to be decided.",
-      status: "confirmed",
+      status: "completed",
     },
     {
       id: "seed-2026-10-16",
@@ -76,7 +76,7 @@ export const SEED_APP_DATA: AppData = {
       topic: "Job talk ",
       speaker: "Jeffrey",
       notes: "",
-      status: "confirmed",
+      status: "completed",
     },
     {
       id: "seed-2026-10-23",

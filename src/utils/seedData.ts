@@ -13,7 +13,7 @@ export const SEED_APP_DATA: AppData = {
     meetingTime: "15:30",
     meetingDayOfWeek: 5,
   },
-  version: 14,
+  version: 15,
   sessions: [
     {
       id: "seed-2026-09-04",
@@ -64,9 +64,9 @@ export const SEED_APP_DATA: AppData = {
       id: "seed-2026-10-09",
       date: "2026-10-09",
       time: "15:30",
-      topic: "Visit from Marcus Carlsson (Lund University) — talk or discussion TBD",
+      topic: "A computational framework for matrix-free second-order optimization",
       speaker: "Marcus Carlsson",
-      notes: "Former Purdue math postdoc, now a professor at Lund University, visiting on Oct 9. Format (talk vs. discussion) to be decided.",
+      notes: "Talk by Marcus Carlsson (former Purdue math postdoc, now a professor at Lund University), visiting on Oct 9.",
       status: "completed",
     },
     {

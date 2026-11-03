@@ -13,7 +13,7 @@ export const SEED_APP_DATA: AppData = {
     meetingTime: "15:30",
     meetingDayOfWeek: 5,
   },
-  version: 15,
+  version: 16,
   sessions: [
     {
       id: "seed-2026-09-04",
@@ -85,7 +85,7 @@ export const SEED_APP_DATA: AppData = {
       topic: "20-minute research presentation",
       speaker: "Dominic",
       notes: "",
-      status: "confirmed",
+      status: "completed",
     },
     {
       id: "seed-2026-10-30",
@@ -94,7 +94,7 @@ export const SEED_APP_DATA: AppData = {
       topic: "STORM",
       speaker: "Xiao Wang",
       notes: "Xiao's algorithm, recently nominated for the Gordon Bell Prize.",
-      status: "confirmed",
+      status: "completed",
     },
     {
       id: "seed-2026-11-06",
